@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const SignIn = () => {
     const [email, setEmail] = useState("")
@@ -10,30 +11,31 @@ const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email || !pass) {
-            toast.error("Email or Password can't be empty.")
+            toast.error("All fields are Mandatory.")
         }
         else {
             const cred = {
                 email: email,
                 password: pass
             }
-            console.log(cred)
             try {
-                const res = await fetch("http://localhost:3000/signin", {
+                const res = await fetch(import.meta.env.VITE_Backend + "/signin", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(cred)
+                    body: JSON.stringify(cred),
+                    credentials: 'include'
                 })
                 const resp = await res.json()
-                console.log(resp.accessToken)
-                if (resp.msg == "logged in") {
-                    toast.success("SignIn Successfull.")
+                if (resp.msg === "Log in Succesfull") {
+                    const udata = jwtDecode(resp.token)
+                    localStorage.setItem("user_data", JSON.stringify(udata))
+                    toast.success(resp.msg + " .Redirecting to Home")
                     setTimeout(() => {
-                        return navigate('/home')
+                        return navigate('/')
                     }, 4000);
                 }
-                else if (resp.msg == "incorrect password") {
-                    toast.error("Incorrect Password.")
+                else if (resp.msg == "Incorrect Password") {
+                    toast.error(resp.msg)
                     setPass("")
                 }
                 else {

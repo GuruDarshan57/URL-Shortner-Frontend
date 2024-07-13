@@ -13,7 +13,7 @@ const SignUp = () => {
         e.preventDefault()
 
         if (!uname || !email || !pass) {
-            toast.error("Username or Email or Password can't be empty.")
+            toast.error("All fields are Mandatory.")
         }
         else {
             const user = {
@@ -22,7 +22,7 @@ const SignUp = () => {
                 password: pass
             }
             try {
-                const res = await fetch("http://localhost:3000/signup", {
+                const res = await fetch(import.meta.env.VITE_Backend + "/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
