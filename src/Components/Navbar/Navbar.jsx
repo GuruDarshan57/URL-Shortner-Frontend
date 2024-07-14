@@ -1,14 +1,8 @@
 import React from 'react'
+import useGetUserDetails from '../../hooks/useGetUserDetails'
 
 const Navbar = () => {
-    const handleSignOut = async () => {
-        const resp = await fetch(import.meta.env.VITE_Backend + "/signout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: 'include'
-        })
-        localStorage.removeItem("user_data")
-    }
+
     return (
         <div>
             <ul style={{
@@ -20,7 +14,7 @@ const Navbar = () => {
                 <li><a href="/signup">Sign Up</a></li>
                 <li><a href="/analytics">Analytics</a></li>
                 <li><a href="/admin">Admin</a></li>
-                <button onClick={handleSignOut}>signout</button>
+                <li><a href="/profile">Profile</a></li>
             </ul>
         </div >
     )

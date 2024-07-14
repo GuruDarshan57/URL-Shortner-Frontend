@@ -9,6 +9,7 @@ import SignUp from './Pages/SignUp/SignUp'
 import Analytics from './Pages/Analytics/Analytics'
 import Admin from './Pages/Admin/Admin'
 import Generate from './Pages/Generate/Generate'
+import Profile from './Pages/Profile/Profile'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/generate" element={<Generate />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </>
