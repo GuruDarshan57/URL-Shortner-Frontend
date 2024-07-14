@@ -2,6 +2,7 @@ import React from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
 
 const Navbar = () => {
+    const { user_data } = useGetUserDetails()
 
     return (
         <div>
@@ -10,11 +11,11 @@ const Navbar = () => {
             }}>
                 <li><a href="/">Home</a></li>
                 <li><a href="/generate">Generate S-URL</a></li>
-                <li><a href="/signin">Sign in</a></li>
-                <li><a href="/signup">Sign Up</a></li>
+                {user_data ? "" : <li><a href="/signin">Sign in</a></li>}
+                {user_data ? "" : <li><a href="/signup">Sign Up</a></li>}
                 <li><a href="/analytics">Analytics</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/profile">Profile</a></li>
+                {user_data?.role === "Admin" ? <li><a href="/admin">Admin</a></li> : ""}
+                {user_data ? <li><a href="/profile">Profile</a></li> : ""}
             </ul>
         </div >
     )

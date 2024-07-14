@@ -1,19 +1,23 @@
 import React from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const { user_data, setUser_data } = useGetUserDetails()
-
+    const navigate = useNavigate()
     const handleSignout = async () => {
         try {
-            const resp = await fetch(import.meta.env.VITE_Backend + "/signout", {
+            const resp = await fetch(import.meta.env.VITE_Backend + "/user/signout", {
                 method: 'post',
                 headers: { "Content-Type": "Application/json" },
                 credentials: 'include'
             })
             const res = await resp.json()
             if (res.msg === "done") {
+                setTimeout(() => {
+                    navigate("/")
+                }, 4000);
                 toast.success("Signed Out succesfully.")
                 localStorage.removeItem("user_data")
                 setUser_data("")

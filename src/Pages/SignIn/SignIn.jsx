@@ -19,7 +19,7 @@ const SignIn = () => {
                 password: pass
             }
             try {
-                const res = await fetch(import.meta.env.VITE_Backend + "/signin", {
+                const res = await fetch(import.meta.env.VITE_Backend + "/user/signin", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(cred),
