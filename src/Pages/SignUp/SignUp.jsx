@@ -27,17 +27,18 @@ const SignUp = () => {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(user),
+                    credentials: 'include'
                 })
                 const resp = await res.json()
-                if (resp.msg == "created") {
-                    toast.success("SignUp Successfull. Redirecting to SignIn")
+                if (res.status === 200) {
+                    toast.success(resp.msg)
                     setTimeout(() => {
-                        return navigate('/signin')
+                        navigate('/signin')
                     }, 2000);
                 }
-                else if (resp.msg == "duplicate") {
-                    toast.warning("Email exists already. Please SignIn")
+                else {
+                    toast.warning(resp.msg)
                 }
             }
             catch (err) {

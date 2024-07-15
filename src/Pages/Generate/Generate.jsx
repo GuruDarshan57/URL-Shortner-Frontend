@@ -19,14 +19,14 @@ const Generate = () => {
                 credentials: 'include'
             })
             const resp = await res.json()
-            if (resp.msg === "try again") {
-                toast.warning("Try again")
-            }
-            else {
+            if (res.status === 200) {
                 toast.success("Short URL successfully created")
                 setLong_url("")
                 setUrl_name("")
                 setS_url(import.meta.env.VITE_Backend + "/shorturl/" + resp.msg)
+            }
+            else {
+                toast.warning(resp.msg);
             }
 
         } catch (err) {

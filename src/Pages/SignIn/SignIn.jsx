@@ -26,7 +26,7 @@ const SignIn = () => {
                     credentials: 'include'
                 })
                 const resp = await res.json()
-                if (resp.msg === "Log in Succesfull") {
+                if (res.status === 200) {
                     const udata = jwtDecode(resp.token)
                     localStorage.setItem("user_data", JSON.stringify(udata))
                     toast.success(resp.msg + " .Redirecting to Home")
@@ -35,12 +35,8 @@ const SignIn = () => {
                         window.location.reload()
                     }, 2000);
                 }
-                else if (resp.msg == "Incorrect Password") {
-                    toast.error(resp.msg)
-                    setPass("")
-                }
                 else {
-                    toast.error("Invalid Email.")
+                    toast.error(resp.msg)
                     setPass("")
                     setEmail("")
                 }
