@@ -31,8 +31,9 @@ const SignIn = () => {
                     localStorage.setItem("user_data", JSON.stringify(udata))
                     toast.success(resp.msg + " .Redirecting to Home")
                     setTimeout(() => {
-                        return navigate('/')
-                    }, 4000);
+                        navigate('/')
+                        window.location.reload()
+                    }, 2000);
                 }
                 else if (resp.msg == "Incorrect Password") {
                     toast.error(resp.msg)

@@ -15,12 +15,13 @@ const Profile = () => {
             })
             const res = await resp.json()
             if (res.msg === "done") {
-                setTimeout(() => {
-                    navigate("/")
-                }, 4000);
                 toast.success("Signed Out succesfully.")
                 localStorage.removeItem("user_data")
                 setUser_data("")
+                setTimeout(() => {
+                    navigate("/")
+                    window.location.reload()
+                }, 2000);
             }
         } catch (err) {
             console.log(err.message)
@@ -28,12 +29,13 @@ const Profile = () => {
     }
     return (
         <div>
-            <table>
-                <tr><td>Name</td><td>{user_data?.name}</td></tr>
-                <tr><td>Email</td><td>{user_data?.email}</td></tr>
-                <tr><td>Role</td><td>{user_data?.role}</td></tr>
-            </table>
-            <button onClick={handleSignout}>Sign Out</button>
+            {user_data ? <>
+                <table>
+                    <tr><td>Name</td><td>{user_data?.name}</td></tr>
+                    <tr><td>Email</td><td>{user_data?.email}</td></tr>
+                    <tr><td>Role</td><td>{user_data?.role}</td></tr>
+                </table>
+                <button onClick={handleSignout}>Sign Out</button></> : ""}
         </div>
     )
 }

@@ -34,7 +34,7 @@ const SignUp = () => {
                     toast.success("SignUp Successfull. Redirecting to SignIn")
                     setTimeout(() => {
                         return navigate('/signin')
-                    }, 4000);
+                    }, 2000);
                 }
                 else if (resp.msg == "duplicate") {
                     toast.warning("Email exists already. Please SignIn")
