@@ -36,26 +36,31 @@ const Generate = () => {
             l_url: long_url,
             name: url_name
         }
-        try {
-            const res = await fetch(import.meta.env.VITE_Backend + "/s_url/generate", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-                credentials: 'include'
-            })
-            const resp = await res.json()
-            if (res.status === 200) {
-                toast.success(resp.msg)
-                setLong_url("")
-                setUrl_name("")
-                setS_url(import.meta.env.VITE_Backend + "/shorturl/" + resp.s_id)
-            }
-            else {
-                toast.warning(resp.msg);
-            }
+        if (!url_name || !long_url) {
+            toast.error("Fill all fields")
+        }
+        else {
+            try {
+                const res = await fetch(import.meta.env.VITE_Backend + "/s_url/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                    credentials: 'include'
+                })
+                const resp = await res.json()
+                if (res.status === 200) {
+                    toast.success(resp.msg)
+                    setLong_url("")
+                    setUrl_name("")
+                    setS_url(import.meta.env.VITE_Backend + "/shorturl/" + resp.s_id)
+                }
+                else {
+                    toast.warning(resp.msg);
+                }
 
-        } catch (err) {
-            console.log(err.message)
+            } catch (err) {
+                console.log(err.message)
+            }
         }
     }
     return (
@@ -73,6 +78,7 @@ const Generate = () => {
                 <table> {recentURL.length != 0 ? recentURL.map(ele => {
                     return <tr><td>{ele.name}</td><td>{ele.short_id}</td><td>{ele.url}</td></tr>
                 }) : <h4>No URL's to display</h4>}</table>
+                <h5>For More detalied view visit Analytics page</h5>
             </div>
         </div>
     )
