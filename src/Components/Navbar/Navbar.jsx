@@ -6,7 +6,7 @@ const Navbar = () => {
     const path = window.location.pathname;
     const commonClasses = "flex-1 flex border-2 border-white p-2 place-content-center hover:bg-white hover:text-black uppercase font-bold tracking-wider";
     const getLinkClass = (linkPath) => `${commonClasses} ${path === linkPath ? 'bg-white text-black' : ''}`;
-    const [toogle, setToggle] = useState("false")
+    const [toogle, setToggle] = useState(false)
     const links = [
         { path: '/', label: 'Home' },
         { path: '/generate', label: 'Generate S-URL' },

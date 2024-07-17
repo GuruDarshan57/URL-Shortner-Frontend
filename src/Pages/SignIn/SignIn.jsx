@@ -47,13 +47,18 @@ const SignIn = () => {
         }
     }
     return (
-        <div>
-            <h2>Sign In</h2>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>
-                <input type="email" placeholder='Email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                <input type="password" placeholder='Password' value={pass} onChange={(e) => { setPass(e.target.value) }} />
-                <button type='submit' >Sign In</button>
-            </form>
+        <div className='flex place-content-center w-screen h-80'>
+            <div>
+
+            </div>
+            <div className='flex-col w-11/12 px-3 sm;p-0 sm:w-1/2'>
+                <div><h2 className='mt-3 text-4xl font-bold tracking-wider'>Sign In</h2></div>
+                <form className='flex-col gap-5' onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>
+                    <input className='border-4 h-10 p-2 mt-3 focus:outline-none' type="email" placeholder='Enter Your Email ID' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                    <input className='border-4 h-10 p-2 focus:outline-none' type="password" placeholder='Enter Your Password' value={pass} onChange={(e) => { setPass(e.target.value) }} />
+                    <button className='uppercase w-40 h-10 text-center border-4 border-white hover:bg-white hover:text-black font-bold' type='submit' >Sign In</button>
+                </form>
+            </div>
         </div>
     )
 }
