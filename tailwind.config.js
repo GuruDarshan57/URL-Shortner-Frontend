@@ -9,7 +9,9 @@ export default {
       fontFamily: {
         playwrite: ['"Playwrite CU"', 'cursive'],
       },
-
+      height: {
+        "85v": "85vh"
+      }
     }
   },
   plugins: [],

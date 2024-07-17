@@ -28,15 +28,19 @@ const Profile = () => {
         }
     }
     return (
-        <div>
-            {user_data ? <>
-                <table>
-                    <tr><td>Name</td><td>{user_data?.name}</td></tr>
-                    <tr><td>Email</td><td>{user_data?.email}</td></tr>
-                    <tr><td>Role</td><td>{user_data?.role}</td></tr>
-                </table>
-                <button onClick={handleSignout}>Sign Out</button></> : ""}
+        <div className='flex w-screen place-content-center'>
+            <div className='flex-col gap-y-5 w-1/2 content-center text-center' >
+                {user_data ? <>
+                    <div><i className="fa-solid fa-user text-6xl mt-5" style={{ color: "#ffffff" }}></i></div>
+                    <div>
+                        <div className='text-xl uppercase mt-3 tracking-wider'>{user_data.name}</div>
+                        <div className='mt-2'>{user_data.email}</div>
+                        <div className='mt-2 uppercase'>{user_data.role}</div>
+                    </div>
+                    <button className='mt-2 uppercase w-40 h-10 text-center border-4 border-white hover:bg-white hover:text-black font-bold' onClick={handleSignout}>Sign Out</button></> : ""}
+            </div>
         </div>
+
     )
 }
 

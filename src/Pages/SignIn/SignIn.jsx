@@ -47,11 +47,8 @@ const SignIn = () => {
         }
     }
     return (
-        <div className='flex place-content-center w-screen h-80'>
-            <div>
-
-            </div>
-            <div className='flex-col w-11/12 px-3 sm;p-0 sm:w-1/2'>
+        <div className='flex place-content-center w-screen '>
+            <div className='flex-col w-11/12 px-3 sm;p-0 sm:w-1/2 place-content-center'>
                 <div><h2 className='mt-3 text-4xl font-bold tracking-wider'>Sign In</h2></div>
                 <form className='flex-col gap-5' onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>
                     <input className='border-4 h-10 p-2 mt-3 focus:outline-none' type="email" placeholder='Enter Your Email ID' value={email} onChange={(e) => { setEmail(e.target.value) }} />
