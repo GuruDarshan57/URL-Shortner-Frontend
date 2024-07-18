@@ -18,9 +18,9 @@ const Navbar = () => {
     ];
 
     return (
-        <div className='flex p-4 place-content-center w-screen'>
+        <div className='flex pt-4 sm:p-4 place-content-center w-screen'>
             <div className='flex flex-col w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 sm:border-2 sm:border-white'>
-                <div className='sm:hidden flex text-xl tracking-normal m-2 place-content-between'>
+                <div className='h-15 sm:hidden flex text-xl tracking-normal sm:m-2 place-content-between'>
                     <div className='font-playwrite'>
                         Shortify
                     </div>
@@ -28,7 +28,7 @@ const Navbar = () => {
                         {toogle ? <i className="fa-solid fa-x text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(false) }}></i> : <i className="fa-solid fa-bars text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(true) }}></i>}
                     </div>
                 </div>
-                <div className={`${toogle ? "flex-col" : "hidden"} sm:flex sm:flex-row w-full justify-evenly pt-2 sm:p-0`} >
+                <div className={`${toogle ? "flex-col mt-3" : "hidden"} sm:flex sm:flex-row w-full justify-evenly pt-2 sm:p-0`} >
                     {links.map(({ path, label, condition = true }) =>
                         condition ? (
                             <a key={path} className={getLinkClass(path)} href={path} >

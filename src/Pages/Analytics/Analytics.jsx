@@ -26,7 +26,7 @@ const Analytics = () => {
     }
     return (
         <div>
-            {data?.url_data?.length != 0 ? <>
+            {data?.url_data.length != 0 ? <>
                 <div>Total URL's generated : {data?.urls}</div>
                 <div>Total clicks : {data?.clicks}</div>
                 <div>Most clicks : {data?.most_clicks}</div>

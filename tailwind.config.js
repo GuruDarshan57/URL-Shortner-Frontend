@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        playwrite: ['"Playwrite CU"', 'cursive'],
+        playwrite: ['Playwrite CU', 'cursive']
       },
       height: {
         "85v": "85vh"
