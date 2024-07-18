@@ -10,12 +10,13 @@ import Analytics from './Pages/Analytics/Analytics'
 import Admin from './Pages/Admin/Admin'
 import Generate from './Pages/Generate/Generate'
 import Profile from './Pages/Profile/Profile'
+import Footer from './Components/Footer/Footer'
 
 function App() {
 
   return (
     <>
-      <div className='main'>
+      <div className='main_con'>
         <Router>
           <NavBar />
           <Routes>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/generate" element={<Generate />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
+          <Footer />
         </Router>
       </div>
     </>
