@@ -35,3 +35,8 @@ body{
         padding-bottom: 150px;
     }
 }
+@media(max-width:500px){
+   .main_con{
+        min-height:95vh
+    }
+}
