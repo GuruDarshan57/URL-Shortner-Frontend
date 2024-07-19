@@ -9,7 +9,7 @@ const URL = (props) => {
                 {name}
             </div>
             <div className='flex-1 border-2 relative hidden xl:inline'>
-                <a className=' text-lime-300' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank">{import.meta.env.VITE_Backend + "/" + short_id}</a>
+                <a className=' text-lime-300' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank">{import.meta.env.VITE_Backend.slice(8,) + "/" + short_id}</a>
                 <i className="fa-solid fa-copy p-1 px-3 text-sm bottom-0 cursor-pointer absolute right-1 " style={{ color: "#63E6BE" }} ></i>
             </div>
             <div className='flex-1 border-2 relative xl:hidden'>
