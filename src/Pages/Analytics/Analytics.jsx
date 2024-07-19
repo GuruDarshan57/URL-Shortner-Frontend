@@ -26,17 +26,18 @@ const Analytics = () => {
         }
     }
     return (
-        <div className='mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
+        <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
             <div className='flex-col w-11/12 sm:w-1/2'>
                 {data?.url_data.length != 0 ? <>
-                    <div className='flex border-2 text-center'>
-                        <div className='flex-1 border-2 flex-col'><div>{data?.urls}</div><div>Total URL's generated</div></div>
-                        <div className='flex-1 border-2 flex-col'><div>{data?.clicks}</div><div>Total Clicks</div></div>
-                        <div className='flex-1 border-2 flex-col'><div>{data?.most_clicks}</div><div>Most Clicks</div></div>
+                    <div className='flex border-2 border-slate-400 text-center py-4'>
+                        <div className='flex-1 border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.urls}</div><div className='tracking-wider uppercase text-sm'>Total URL's</div></div>
+                        <div className='flex-1 border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.clicks}</div><div className='tracking-wider uppercase text-sm'>Total Clicks</div></div>
+                        <div className='flex-1 flex-col'><div className='text-6xl sm:text-8xl'>{data?.most_clicks}</div><div className='tracking-wider uppercase text-sm'>Most Clicks</div></div>
                     </div>
 
                     <div>
                         <div>
+                            {data ? <AURL data={{ name: "Name", url: "URL", short_id: "Short URL", clicks: "Clicks" }} heading={true} /> : ""}
                             {data?.url_data?.map((ele) =>
                                 <AURL key={ele._id} data={ele} />)}
                         </div>

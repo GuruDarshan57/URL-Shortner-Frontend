@@ -44,6 +44,9 @@ const Generate = () => {
         if (!url_name || !long_url) {
             toast.error("Fill all fields")
         }
+        else if (url_name.length > 11) {
+            toast.warning("Use Short Name")
+        }
         else {
             try {
                 const res = await fetch(import.meta.env.VITE_Backend + "/s_url/generate", {
@@ -58,6 +61,9 @@ const Generate = () => {
                     setLong_url("")
                     setUrl_name("")
                     setS_url(import.meta.env.VITE_Backend + "/" + resp.s_id)
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 2900);
                 }
                 else {
                     toast.warning(resp.msg);
@@ -91,6 +97,7 @@ const Generate = () => {
                 <div className='w-full'>
                     <div><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider mb-3'>Recent Short URL's [{recentURL.length}]</h2></div>
                     <div className='flex-col w-full'>
+                        {recentURL.length != 0 ? <URL data={{ name: "Name", url: "URL", short_id: "Short URL" }} heading={true} /> : ""}
                         {recentURL.length != 0 ? recentURL.map(ele => {
                             return <URL data={ele} />
                         }) : <h4>No URL's to display</h4>}</div>
