@@ -8,6 +8,10 @@ const Generate = () => {
     const [s_url, setS_url] = useState("SHORT URL")
     const [recentURL, setRecentURL] = useState([])
 
+    const copyLink = (url) => {
+        navigator.clipboard.writeText(url)
+    }
+
     useEffect(() => {
         getRecent()
     }, [])
@@ -78,7 +82,11 @@ const Generate = () => {
                         color: "#63E6BE"
                     }}></i>
                     < a className='p-2 text-sm sm:text-base sm:font-semibold tracking-wide text-lime-300' href={s_url} target='_blank' style={{ pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }}> {s_url}</a>
-                    <i className="fa-solid fa-copy p-1 px-3 text-xl cursor-pointer border-l-2 border-slate-400" style={{ color: "#63E6BE", pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }} ></i>
+                    <i className="fa-solid fa-copy p-1 px-3 text-xl cursor-pointer border-l-2 border-slate-400" style={{ color: "#63E6BE", pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }} onClick={() => {
+                        const link = s_url
+                        s_url === "SHORT URL" ? "" : copyLink(link)
+
+                    }}></i>
                 </div>
                 <div className='w-full'>
                     <div><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider mb-3'>Recent Short URL's [{recentURL.length}]</h2></div>
