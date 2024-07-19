@@ -26,7 +26,7 @@ const Analytics = () => {
         }
     }
     return (
-        <div className='mt-28 pb-10 sm-pb-28 flex w-full place-content-center'>
+        <div className='mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
             <div className='flex-col w-11/12 sm:w-1/2'>
                 {data?.url_data.length != 0 ? <>
                     <div className='flex border-2 text-center'>
@@ -38,7 +38,7 @@ const Analytics = () => {
                     <div>
                         <div>
                             {data?.url_data?.map((ele) =>
-                                <AURL data={ele} />)}
+                                <AURL key={ele._id} data={ele} />)}
                         </div>
                     </div></> : ""}
             </div>

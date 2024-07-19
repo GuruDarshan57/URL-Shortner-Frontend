@@ -1,4 +1,5 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 
 const AURL = (props) => {
     const { _id, name, url, short_id, clicks } = props.data
@@ -6,6 +7,32 @@ const AURL = (props) => {
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
     }
+
+    const handleDelete = async () => {
+        const payload = { id: _id }
+        try {
+            const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/delete", {
+                method: "delete",
+                headers: { 'content-type': "application/json" },
+                body: JSON.stringify(payload),
+                credentials: 'include'
+            })
+            const res = await resp.json()
+            if (resp.status === 200) {
+                toast.success(res.msg)
+                console.log("hi")
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000);
+            }
+            else {
+                toast.error(res.msg)
+            }
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
     return (
         <div className='mt-6 flex w-full text-center p-1 tracking-wide'>
             <div className='w-24 sm:w-28 border-2 border-r-0 rounded-sm rounded-r-none'>
@@ -29,7 +56,7 @@ const AURL = (props) => {
                 {clicks}
             </div>
             <div className='w-14 sm:w-28 border-2 rounded-sm rounded-l-none'>
-                <i class="fa-solid fa-trash" style={{ color: "#63E6BE" }}></i>
+                <i className="fa-solid fa-trash cursor-pointer" style={{ color: "#63E6BE" }} onClick={handleDelete}></i>
             </div>
         </div>
     )
