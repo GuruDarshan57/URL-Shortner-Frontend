@@ -51,12 +51,12 @@ const SignUp = () => {
             <div>
 
             </div>
-            <div className='mt-20 flex-col w-11/12 px-3 sm:px-0 sm:w-1/2'>
+            <div className='flex-col w-11/12 px-3 sm:px-0 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-4xl font-bold tracking-wider'>Sign Up</h2></div>
                 <form className='flex-col gap-5' onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>
-                    <input className='border-2 h-10 p-2 mt-3 focus:outline-none' type="text" placeholder='Enter Your Name' value={uname} onChange={(e) => { setUname(e.target.value) }} />
-                    <input className='border-2 h-10 p-2 focus:outline-none' type="email" placeholder='Enter Your Email ID' value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                    <input className='border-2 h-10 p-2 focus:outline-none' type="password" placeholder='Enter Your Password' value={pass} onChange={(e) => { setPass(e.target.value) }} />
+                    <input className='border-2 bg-black h-10 p-2 mt-3 focus:outline-none' type="text" placeholder='Enter Your Name' value={uname} onChange={(e) => { setUname(e.target.value) }} />
+                    <input className='border-2 bg-black h-10 p-2 focus:outline-none' type="email" placeholder='Enter Your Email ID' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                    <input className='border-2 bg-black h-10 p-2 focus:outline-none' type="password" placeholder='Enter Your Password' value={pass} onChange={(e) => { setPass(e.target.value) }} />
                     <button className='uppercase w-40 h-10 text-center border-4 border-white hover:bg-white hover:text-black font-bold' type='submit' >Sign Up</button>
                 </form>
             </div>

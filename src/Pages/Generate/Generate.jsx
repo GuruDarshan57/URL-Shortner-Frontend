@@ -65,12 +65,12 @@ const Generate = () => {
         }
     }
     return (
-        <div className='mt-5 sm:mt-20 flex w-screen place-content-center'>
+        <div className='mt-16 sm:mt-20 flex w-screen place-content-center sm:pb-28'>
             <div className='flex-col w-11/12 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-2xl sm:text-4xl font-bold tracking-wider'>GENERATE sHORT-URL</h2></div>
                 <form className='flex-col gap-5' style={{ display: 'flex', flexDirection: "column" }}>
-                    <input className='border-2 h-10 p-2 mt-4 focus:outline-none' type="text" name="long_url" id="long_url" placeholder='URL' value={long_url} onChange={(e) => { setLong_url(e.target.value) }} />
-                    <input className='border-2 h-10 p-2 focus:outline-none' type="text" name="url_name" id="url_name" placeholder='Name' value={url_name} onChange={(e) => { setUrl_name(e.target.value) }} />
+                    <input className='border-2 bg-black h-10 p-2 mt-4 focus:outline-none' type="text" name="long_url" id="long_url" placeholder='URL' value={long_url} onChange={(e) => { setLong_url(e.target.value) }} />
+                    <input className='border-2 bg-black h-10 p-2 focus:outline-none' type="text" name="url_name" id="url_name" placeholder='Name' value={url_name} onChange={(e) => { setUrl_name(e.target.value) }} />
                     <button className='uppercase w-52 h-10 text-center border-4 border-white hover:bg-white hover:text-black font-bold tracking-wide' onClick={handleCreatesurl}>Create Short URL</button>
                 </form>
                 <div className='flex justify-between w-full h-10 border-2 rounded-sm border-slate-400 mt-5'>

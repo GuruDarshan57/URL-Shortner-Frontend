@@ -28,7 +28,7 @@ const Profile = () => {
         }
     }
     return (
-        <div className='mt-20 flex w-screen place-content-center'>
+        <div className='flex w-screen place-content-center'>
             <div className='flex-col gap-y-5 w-1/2 content-center text-center' >
                 {user_data ? <>
                     <div><i className="fa-solid fa-user text-6xl mt-5" style={{ color: "#ffffff" }}></i></div>
