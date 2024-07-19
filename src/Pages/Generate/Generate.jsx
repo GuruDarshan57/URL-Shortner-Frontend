@@ -53,7 +53,7 @@ const Generate = () => {
                     toast.success(resp.msg)
                     setLong_url("")
                     setUrl_name("")
-                    setS_url(import.meta.env.VITE_Backend + "/shorturl/" + resp.s_id)
+                    setS_url(import.meta.env.VITE_Backend + "/" + resp.s_id)
                 }
                 else {
                     toast.warning(resp.msg);
@@ -77,15 +77,16 @@ const Generate = () => {
                     <i className="fa-solid fa-link p-1 px-2 text-xl border-r-2 border-slate-400" style={{
                         color: "#63E6BE"
                     }}></i>
-                    < a className='p-2 font-bold tracking-wide text-lime-300' href={s_url} target='_blank' style={{ pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }}> {s_url}</a>
+                    < a className='p-2 text-sm sm:text-base sm:font-semibold tracking-wide text-lime-300' href={s_url} target='_blank' style={{ pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }}> {s_url}</a>
                     <i className="fa-solid fa-copy p-1 px-3 text-xl cursor-pointer border-l-2 border-slate-400" style={{ color: "#63E6BE", pointerEvents: `${s_url === "SHORT URL" ? "none" : ''}` }} ></i>
                 </div>
-                <div>
-                    <div><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider'>Recent Short URL's [{recentURL.length}]</h2></div>
-                    <div> {recentURL.length != 0 ? recentURL.map(ele => {
-                        return <URL key={ele._id} data={ele} />
-                    }) : <h4>No URL's to display</h4>}</div>
-                    {recentURL.length != 0 ? <div><h5 className='mt-2'>For More detalied view visit Analytics page</h5></div> : ""}
+                <div className='w-full'>
+                    <div><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider mb-3'>Recent Short URL's [{recentURL.length}]</h2></div>
+                    <div className='flex-col w-full'>
+                        {recentURL.length != 0 ? recentURL.map(ele => {
+                            return <URL data={ele} />
+                        }) : <h4>No URL's to display</h4>}</div>
+                    {recentURL.length != 0 ? <div className='pl-1'><h5 className='mt-2'>For More detalied view visit Analytics page</h5></div> : ""}
                 </div>
             </div>
         </div >
