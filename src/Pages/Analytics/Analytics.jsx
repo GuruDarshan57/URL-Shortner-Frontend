@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
+import AURL from '../../Components/AURL/AURL'
 
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
@@ -25,19 +26,22 @@ const Analytics = () => {
         }
     }
     return (
-        <div>
-            {data?.url_data.length != 0 ? <>
-                <div>Total URL's generated : {data?.urls}</div>
-                <div>Total clicks : {data?.clicks}</div>
-                <div>Most clicks : {data?.most_clicks}</div>
+        <div className='mt-28 pb-10 sm-pb-28 flex w-full place-content-center'>
+            <div className='flex-col w-11/12 sm:w-1/2'>
+                {data?.url_data.length != 0 ? <>
+                    <div className='flex border-2 text-center'>
+                        <div className='flex-1 border-2 flex-col'><div>{data?.urls}</div><div>Total URL's generated</div></div>
+                        <div className='flex-1 border-2 flex-col'><div>{data?.clicks}</div><div>Total Clicks</div></div>
+                        <div className='flex-1 border-2 flex-col'><div>{data?.most_clicks}</div><div>Most Clicks</div></div>
+                    </div>
 
-                <div>
-                    <table>
-                        <th><td>Name</td><td>Short ID</td><td>URL</td><td>Clicks</td></th>
-                        {data?.url_data?.map((ele) =>
-                            <tr><td>{ele.name}</td><td>{ele.short_id}</td><td>{ele.url}</td><td>{ele.clicks}</td></tr>)}
-                    </table>
-                </div></> : ""}
+                    <div>
+                        <div>
+                            {data?.url_data?.map((ele) =>
+                                <AURL data={ele} />)}
+                        </div>
+                    </div></> : ""}
+            </div>
         </div>
     )
 }

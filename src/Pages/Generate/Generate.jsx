@@ -69,7 +69,7 @@ const Generate = () => {
         }
     }
     return (
-        <div className='mt-16 sm:mt-20 flex w-screen place-content-center sm:pb-28'>
+        <div className='mt-20 sm:mt-28 flex w-screen place-content-center sm:pb-28'>
             <div className='flex-col w-11/12 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-2xl sm:text-4xl font-bold tracking-wider'>GENERATE sHORT-URL</h2></div>
                 <form className='flex-col gap-5' style={{ display: 'flex', flexDirection: "column" }}>
