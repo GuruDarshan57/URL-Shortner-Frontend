@@ -29,7 +29,7 @@ const Analytics = () => {
     return (
         <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
             <div className='flex-col w-11/12 sm:w-1/2'>
-                {data?.url_data.length != 0 ? <>
+                {data?.url_data?.length > 1 ? <>
                     <div className='flex sm:border-2 sm:border-slate-400 text-center py-4'>
                         <div className='flex-1 sm:border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.urls}</div><div className='tracking-wider uppercase text-sm'>Total URL's</div></div>
                         <div className='flex-1 sm:border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.clicks}</div><div className='tracking-wider uppercase text-sm'>Total Clicks</div></div>
@@ -45,7 +45,7 @@ const Analytics = () => {
                             {data?.url_data?.map((ele) =>
                                 <AURL key={ele._id} data={ele} />)}
                         </div>
-                    </div></> : ""}
+                    </div></> : <h2 className='text-center text-2xl tracking-wider'>Please Generate more URL's to display Analytics</h2>}
             </div>
         </div>
     )
