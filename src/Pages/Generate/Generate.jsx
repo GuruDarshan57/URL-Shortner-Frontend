@@ -7,6 +7,7 @@ const Generate = () => {
     const [url_name, setUrl_name] = useState("")
     const [s_url, setS_url] = useState("SHORT URL")
     const [recentURL, setRecentURL] = useState([])
+    const [loader, setLoader] = useState(true)
 
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
@@ -30,8 +31,10 @@ const Generate = () => {
             else {
                 setRecentURL([])
             }
+            setLoader(false)
         } catch (err) {
             console.log(err.message)
+            setLoader(false)
         }
     }
 
@@ -61,9 +64,6 @@ const Generate = () => {
                     setLong_url("")
                     setUrl_name("")
                     setS_url(import.meta.env.VITE_Backend + "/" + resp.s_id)
-                    setTimeout(() => {
-                        window.location.reload()
-                    }, 2900);
                 }
                 else {
                     toast.warning(resp.msg);
@@ -76,7 +76,7 @@ const Generate = () => {
     }
     return (
         <div className='mt-20 sm:mt-28 flex w-screen place-content-center sm:pb-28'>
-            <div className='flex-col w-11/12 sm:w-1/2'>
+            {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-2xl sm:text-4xl font-bold tracking-wider'>GENERATE sHORT-URL</h2></div>
                 <form className='flex-col gap-5' style={{ display: 'flex', flexDirection: "column" }}>
                     <input type="url" className='border-2 bg-black h-10 p-2 mt-4 focus:outline-none' name="long_url" id="long_url" placeholder='URL' value={long_url} onChange={(e) => { setLong_url(e.target.value) }} />
@@ -103,8 +103,9 @@ const Generate = () => {
                         }) : <h4>No URL's to display</h4>}</div>
                     {recentURL.length != 0 ? <div className='pl-1'><h5 className='mt-2'>For More detalied view visit Analytics page</h5></div> : ""}
                 </div>
-            </div>
+            </div>}
         </div >
+
     )
 }
 

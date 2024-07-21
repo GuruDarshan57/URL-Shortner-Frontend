@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
     <ToastContainer
-      position="top-center"
+      position="top-right"
       autoClose={1700}
       hideProgressBar={false}
       newestOnTop={false}
@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       pauseOnFocusLoss={false}
       draggable={false}
       pauseOnHover
-      theme="light"
+      theme="dark"
       transition:Bounce
     />
   </React.StrictMode>,

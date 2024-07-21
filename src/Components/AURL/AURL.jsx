@@ -20,10 +20,6 @@ const AURL = (props) => {
             const res = await resp.json()
             if (resp.status === 200) {
                 toast.success(res.msg)
-                console.log("hi")
-                setTimeout(() => {
-                    window.location.reload()
-                }, 2900);
             }
             else {
                 toast.error(res.msg)
@@ -39,7 +35,7 @@ const AURL = (props) => {
                 {name}
             </div>
             <div className='flex-1 border-r-0 sm:border-r-2 border-2  relative -z-0'>
-                <a className=' text-lime-300' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank" style={{ pointerEvents: `${props.heading ? "none" : ''}` }}>Short URL</a>
+                <a className=' text-lime-300 cursor-pointer' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank" style={{ pointerEvents: `${props.heading ? "none" : ''}` }}>Short URL</a>
                 {props.heading ? "" : <i className="fa-solid fa-copy p-1 px-3 text-sm bottom-0 cursor-pointer absolute -right-2 sm:-right-2 " style={{ color: "#63E6BE" }} onClick={() => {
                     const link = import.meta.env.VITE_Backend + "/" + short_id;
                     copyLink(link)

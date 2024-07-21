@@ -6,6 +6,7 @@ import PieChart from '../../Components/PieChart/PieChart'
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
     const [data, setData] = useState()
+    const [loader, setLoader] = useState(true)
     useEffect(() => {
         getAnalyticsData()
     }, [])
@@ -21,14 +22,16 @@ const Analytics = () => {
                 if (resp.status === 200) {
                     setData(res)
                 }
+                setLoader(false)
             } catch (err) {
                 console.log(err.message)
+                setLoader(false)
             }
         }
     }
     return (
         <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
-            <div className='flex-col w-11/12 sm:w-1/2'>
+            {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 sm:w-1/2'>
                 {data?.url_data?.length > 1 ? <>
                     <div className='flex sm:border-2 sm:border-slate-400 text-center py-4'>
                         <div className='flex-1 sm:border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.urls}</div><div className='tracking-wider uppercase text-sm'>Total URL's</div></div>
@@ -46,7 +49,7 @@ const Analytics = () => {
                                 <AURL key={ele._id} data={ele} />)}
                         </div>
                     </div></> : <h2 className='text-center text-2xl tracking-wider'>Please Generate more URL's to display Analytics</h2>}
-            </div>
+            </div>}
         </div>
     )
 }
