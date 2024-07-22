@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const { user_data, setUser_data } = useGetUserDetails()
+    const [loader, setLoader] = useState(false)
+
     const navigate = useNavigate()
     const handleSignout = async () => {
         try {
+            setLoader(true)
             const resp = await fetch(import.meta.env.VITE_Backend + "/user/signout", {
                 method: 'post',
                 headers: { "Content-Type": "Application/json" },
@@ -23,8 +26,10 @@ const Profile = () => {
                     window.location.reload()
                 }, 2000);
             }
+            setLoader(false)
         } catch (err) {
             console.log(err.message)
+            setLoader(false)
         }
     }
     return (

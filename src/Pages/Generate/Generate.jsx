@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import useGetUserData from '../../hooks/useGetUserDetails'
 import { toast } from 'react-toastify';
 import URL from '../../Components/URL/URL';
 
 const Generate = () => {
+    const { user_data } = useGetUserData()
     const [long_url, setLong_url] = useState("")
     const [url_name, setUrl_name] = useState("")
     const [s_url, setS_url] = useState("SHORT URL")
     const [recentURL, setRecentURL] = useState([])
-    const [loader, setLoader] = useState(true)
+    const [loader, setLoader] = useState(false)
 
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
@@ -18,23 +20,26 @@ const Generate = () => {
     }, [])
 
     const getRecent = async () => {
-        try {
-            const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/getRecent", {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-                credentials: 'include'
-            })
-            const res = await resp.json()
-            if (resp.status === 200) {
-                setRecentURL(res.data)
+        if (user_data) {
+            try {
+                setLoader(true)
+                const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/getRecent", {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: 'include'
+                })
+                const res = await resp.json()
+                if (resp.status === 200) {
+                    setRecentURL(res.data)
+                }
+                else {
+                    setRecentURL([])
+                }
+                setLoader(false)
+            } catch (err) {
+                console.log(err.message)
+                setLoader(false)
             }
-            else {
-                setRecentURL([])
-            }
-            setLoader(false)
-        } catch (err) {
-            console.log(err.message)
-            setLoader(false)
         }
     }
 
