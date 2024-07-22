@@ -8,6 +8,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
     const navigate = useNavigate();
+    const [loader, setLoader] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,6 +23,7 @@ const SignUp = () => {
                 password: pass
             }
             try {
+                setLoader(true)
                 const res = await fetch(import.meta.env.VITE_Backend + "/user/signup", {
                     method: "POST",
                     headers: {
@@ -40,18 +42,17 @@ const SignUp = () => {
                 else {
                     toast.warning(resp.msg)
                 }
+                setLoader(false)
             }
             catch (err) {
                 console.log(err)
+                setLoader(false)
             }
         }
     }
     return (
-        <div className='flex place-content-center w-screen h-80'>
-            <div>
-
-            </div>
-            <div className='flex-col w-11/12 px-3 sm:px-0 sm:w-1/2'>
+        <div className='flex place-content-center w-screen'>
+            {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 px-3 sm:px-0 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-4xl font-bold tracking-wider'>Sign Up</h2></div>
                 <form className='flex-col gap-5' onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>
                     <input className='border-2 bg-black h-10 p-2 mt-3 focus:outline-none' type="text" placeholder='Enter Your Name' value={uname} onChange={(e) => { setUname(e.target.value) }} />
@@ -59,7 +60,7 @@ const SignUp = () => {
                     <input className='border-2 bg-black h-10 p-2 focus:outline-none' type="password" placeholder='Enter Your Password' value={pass} onChange={(e) => { setPass(e.target.value) }} />
                     <button className='uppercase w-40 h-10 text-center border-4 border-white hover:bg-white hover:text-black font-bold' type='submit' >Sign Up</button>
                 </form>
-            </div>
+            </div>}
         </div>
 
     )
