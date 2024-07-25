@@ -1,5 +1,3 @@
-![Untitled design](https://github.com/user-attachments/assets/c346fa13-c2a9-4835-ac6f-3ca96b000be1)# URL Shortener Frontend
-
 This is the frontend for the URL Shortener application, built using React.js and Tailwind. It allows users to generate short URLs, view analytics, and manage authentication.
 
 ## Features
