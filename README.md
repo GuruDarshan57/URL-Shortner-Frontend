@@ -12,7 +12,8 @@ This is the frontend for the URL Shortener application, built using React.js and
 
 The backend for this project is available [here](https://github.com/GuruDarshan57/URL-Shortner-Backend).
 
-## Screenshots
+## Screenshots![4](https://github.com/user-attachments/assets/fbfb5e43-9649-4d24-936b-153e951b05d4)
+
 
 ![Screenshot 1](https://photos.app.goo.gl/AbGnLB4dDrWxiuUeA)
 ![Screenshot 2](path_to_image2)
