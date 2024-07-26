@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
@@ -8,6 +8,12 @@ const SignIn = () => {
     const [pass, setPass] = useState("")
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false)
+
+    useEffect(() => {
+        toast.info('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
+            autoClose: 6000,
+        });
+    }, [])
 
     const handleSubmit1 = async (e) => {
         e.preventDefault();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
@@ -9,6 +9,12 @@ const SignUp = () => {
     const [pass, setPass] = useState("")
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false)
+
+    useEffect(() => {
+        toast.info('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
+            autoClose: 6000,
+        });
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

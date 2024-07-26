@@ -37,6 +37,10 @@ body{
     bottom: 20px;
 }
 
+.Toastify__toast-body{
+    white-space: pre-line;
+}
+
 /* HTML: <div class="loader"></div> */
 .loader {
     width: 40px;
