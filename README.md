@@ -1,3 +1,5 @@
+# URL Shortener Forntend
+
 This is the frontend for the URL Shortener application, built using React.js and Tailwind. It allows users to generate short URLs, view analytics, and manage authentication.
 
 ## Features
