@@ -19,7 +19,9 @@ The backend for this project is available [here](https://github.com/GuruDarshan5
 - ChartJS
 
 
-![Untitled design](https://github.com/user-attachments/assets/9f244d1a-b1da-4564-aab0-db200dd72463)
+![Desktop](https://github.com/user-attachments/assets/95e0d436-ac0c-4b61-a9de-707997b5c73c)
+
+![Mobile](https://github.com/user-attachments/assets/2318bcab-d5f3-49a8-8e77-9df1f6478021)
 
 
 ## Getting Started
@@ -37,4 +39,3 @@ The backend for this project is available [here](https://github.com/GuruDarshan5
     ```bash
     npm run dev
     ```
-
