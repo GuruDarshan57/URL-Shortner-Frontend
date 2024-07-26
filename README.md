@@ -1,8 +1,41 @@
-# React + Vite
+# URL Shortener Forntend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the URL Shortener application, built using React.js and Tailwind. It allows users to generate short URLs, view analytics, and manage authentication.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Generate short URLs
+- View URL analytics
+- User authentication (sign-in/sign-up)
+
+## Backend
+
+The backend for this project is available [here](https://github.com/GuruDarshan57/URL-Shortner-Backend).
+
+## Technologies Used
+
+- React.js
+- Tailwind
+- ChartJS
+
+
+![Desktop](https://github.com/user-attachments/assets/95e0d436-ac0c-4b61-a9de-707997b5c73c)
+
+![Mobile](https://github.com/user-attachments/assets/2318bcab-d5f3-49a8-8e77-9df1f6478021)
+
+
+## Getting Started
+
+1. Clone the repository:
+    ```bash
+    https://github.com/GuruDarshan57/URL-Shortner-Frontend.git
+    ```
+2. Install dependencies:
+    ```bash
+    cd URL-Shortner-Frontend
+    npm i
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
