@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
 import AURL from '../../Components/AURL/AURL'
 import PieChart from '../../Components/PieChart/PieChart'
+import { toast } from 'react-toastify';
 
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
@@ -13,10 +14,10 @@ const Analytics = () => {
     const getAnalyticsData = async (e) => {
         if (user_data) {
             try {
-                let res;
+                var res = -1;
                 setTimeout(() => {
-                    res ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
-                }, 6000);
+                    res != -1 ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                }, 5000);
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/analytics", {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },

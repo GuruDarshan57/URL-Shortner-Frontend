@@ -26,7 +26,7 @@ const Generate = () => {
                 let res;
                 setTimeout(() => {
                     res ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
-                }, 6000);
+                }, 5000);
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/getRecent", {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
