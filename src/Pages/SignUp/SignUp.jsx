@@ -30,6 +30,10 @@ const SignUp = () => {
             }
             try {
                 setLoader(true)
+                let resp;
+                setTimeout(() => {
+                    resp ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                }, 6000);
                 const res = await fetch(import.meta.env.VITE_Backend + "/user/signup", {
                     method: "POST",
                     headers: {
@@ -38,7 +42,7 @@ const SignUp = () => {
                     body: JSON.stringify(user),
                     credentials: 'include'
                 })
-                const resp = await res.json()
+                resp = await res.json()
                 if (res.status === 200) {
                     toast.success(resp.msg)
                     setTimeout(() => {

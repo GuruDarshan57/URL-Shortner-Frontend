@@ -23,12 +23,16 @@ const Generate = () => {
         if (user_data) {
             try {
                 setLoader(true)
+                let res;
+                setTimeout(() => {
+                    res ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                }, 6000);
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/getRecent", {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
                     credentials: 'include'
                 })
-                const res = await resp.json()
+                res = await resp.json()
                 if (resp.status === 200) {
                     setRecentURL(res.data)
                 }

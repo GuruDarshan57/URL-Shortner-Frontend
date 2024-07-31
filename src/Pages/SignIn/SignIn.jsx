@@ -27,13 +27,17 @@ const SignIn = () => {
             }
             try {
                 setLoader(true)
+                let resp;
+                setTimeout(() => {
+                    resp ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                }, 6000);
                 const res = await fetch(import.meta.env.VITE_Backend + "/user/signin", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(cred),
                     credentials: 'include'
                 })
-                const resp = await res.json()
+                resp = await res.json()
                 if (res.status === 200) {
                     const udata = jwtDecode(resp.token)
                     localStorage.setItem("user_data", JSON.stringify(udata))
