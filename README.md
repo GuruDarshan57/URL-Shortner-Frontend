@@ -39,3 +39,4 @@ The backend for this project is available [here](https://github.com/GuruDarshan5
     ```bash
     npm run dev
     ```
+4. Rename .env-template as .env and replace with suitable values.
