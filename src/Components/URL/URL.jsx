@@ -1,10 +1,12 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 
 const URL = (props) => {
     const { _id, name, url, short_id } = props.data
 
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
+        toast.success("Copied to Clipboard")
     }
     return (
         <div className='mt-6 flex w-full text-center p-1 tracking-wide'>
