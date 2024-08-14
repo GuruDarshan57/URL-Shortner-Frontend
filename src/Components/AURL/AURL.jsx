@@ -6,6 +6,7 @@ const AURL = (props) => {
 
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
+        toast.success("Copied to Clipboard")
     }
 
     const handleDelete = async () => {
