@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
 import AURL from '../../Components/AURL/AURL'
 import PieChart from '../../Components/PieChart/PieChart'
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
@@ -16,7 +16,7 @@ const Analytics = () => {
             try {
                 var res = -1;
                 setTimeout(() => {
-                    res != -1 ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                    res != -1 ? "" : toast.error("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
                 }, 5000);
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/analytics", {
                     method: "GET",
@@ -35,7 +35,7 @@ const Analytics = () => {
         }
     }
     return (
-        <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center'>
+        <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center text-white'>
             {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 sm:w-1/2'>
                 {data?.url_data?.length > 1 ? <>
                     <div className='flex sm:border-2 sm:border-slate-400 text-center py-4'>

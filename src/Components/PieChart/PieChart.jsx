@@ -78,7 +78,7 @@ const PieChart = (props) => {
     };
 
     return (
-        <div className='m-4 flex-col text-center pb-5 w-11/12 h-96' >
+        <div className='m-4 flex-col text-center pb-5 w-11/12 h-96 text-white' >
             <Pie data={data} options={options} />
             <p className='text-xs mt-1'>* Click/Hover for more info</p>
         </div>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { FaUserAlt } from "react-icons/fa";
 
 const Profile = () => {
     const { user_data, setUser_data } = useGetUserDetails()
@@ -33,10 +34,10 @@ const Profile = () => {
         }
     }
     return (
-        <div className='flex w-screen place-content-center'>
-            <div className='flex-col gap-y-5 w-1/2 content-center text-center' >
+        <div className='flex w-screen place-content-center text-white'>
+            <div className='flex-col gap-y-5 w-1/2 content-center text-center ' >
                 {user_data ? <>
-                    <div><i className="fa-solid fa-user text-6xl mt-5" style={{ color: "#ffffff" }}></i></div>
+                    <div className='flex justify-center items-center'><span className="text-6xl mt-5" style={{ color: "#ffffff" }}><FaUserAlt /></span></div>
                     <div>
                         <div className='text-xl uppercase mt-3 tracking-wider'>{user_data.name}</div>
                         <div className='mt-2'>{user_data.email}</div>

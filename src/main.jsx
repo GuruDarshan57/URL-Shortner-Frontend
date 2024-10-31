@@ -2,26 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <>
     <App />
-    <ToastContainer
-      position="top-right"
-      autoClose={1700}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable={false}
-      pauseOnHover
-      theme="dark"
-      transition:Bounce
-    /></>
+    <Toaster
+      containerStyle={{
+        top: 80,
+        left: 0,
+        bottom: 20,
+        right: 0,
+      }}
+    />
+  </>
   // </React.StrictMode>,
 )

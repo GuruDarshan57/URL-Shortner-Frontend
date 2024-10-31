@@ -18,7 +18,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className='nav_bg flex pt-6 px-2 sm:p-4 sm:py-6 sm:px-0 place-content-center w-screen fixed top-0 bg-black z-10'>
+        <div className='nav_bg flex pt-6 px-2 sm:p-4 sm:py-6 sm:px-0 place-content-center w-screen fixed top-0 bg-black z-10 text-white'>
             <div className='flex flex-col w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 sm:border-2 sm:border-white'>
                 <div className='h-15 sm:hidden flex text-xl tracking-normal sm:m-2 place-content-between'>
                     <div className='font-playwrite'>

@@ -12,6 +12,8 @@ import Generate from './Pages/Generate/Generate'
 import Profile from './Pages/Profile/Profile'
 import Footer from './Components/Footer/Footer'
 
+
+
 function App() {
 
   return (

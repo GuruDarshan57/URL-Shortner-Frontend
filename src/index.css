@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-icons {
+    vertical-align: middle;
+  }

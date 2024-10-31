@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
     const [uname, setUname] = useState("")
@@ -11,7 +11,7 @@ const SignUp = () => {
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
-        toast.info('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
+        toast.success('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
             autoClose: 6000,
         });
     }, [])
@@ -32,7 +32,7 @@ const SignUp = () => {
                 setLoader(true)
                 let resp;
                 setTimeout(() => {
-                    resp ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                    resp ? "" : toast.error("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
                 }, 6000);
                 const res = await fetch(import.meta.env.VITE_Backend + "/user/signup", {
                     method: "POST",
@@ -50,7 +50,7 @@ const SignUp = () => {
                     }, 2000);
                 }
                 else {
-                    toast.warning(resp.msg)
+                    toast.error(resp.msg)
                 }
                 setLoader(false)
             }
@@ -61,7 +61,7 @@ const SignUp = () => {
         }
     }
     return (
-        <div className='flex place-content-center w-screen'>
+        <div className='flex place-content-center w-screen text-white'>
             {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 px-3 sm:px-0 sm:w-1/2'>
                 <div><h2 className='uppercase mt-3 text-4xl font-bold tracking-wider'>Sign Up</h2></div>
                 <form className='flex-col gap-5' onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column' }}>

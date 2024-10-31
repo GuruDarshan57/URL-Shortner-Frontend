@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
@@ -10,7 +10,7 @@ const SignIn = () => {
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
-        toast.info('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
+        toast.success('Tryout Credentials \n Email : test123@gmail.com \n Password : test', {
             autoClose: 6000,
         });
     }, [])
@@ -29,7 +29,7 @@ const SignIn = () => {
                 setLoader(true)
                 let resp;
                 setTimeout(() => {
-                    resp ? "" : toast.warning("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
+                    resp ? "" : toast.error("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
                 }, 6000);
                 const res = await fetch(import.meta.env.VITE_Backend + "/user/signin", {
                     method: "POST",
@@ -41,9 +41,9 @@ const SignIn = () => {
                 if (res.status === 200) {
                     const udata = jwtDecode(resp.token)
                     localStorage.setItem("user_data", JSON.stringify(udata))
-                    toast.success(resp.msg + " .Redirecting to Home")
+                    toast.success(resp.msg)
                     setTimeout(() => {
-                        navigate('/')
+                        navigate('/generate')
                         window.location.reload()
                     }, 2000);
                 }
@@ -61,7 +61,7 @@ const SignIn = () => {
         }
     }
     return (
-        <div className='flex place-content-center w-screen'>
+        <div className='flex place-content-center w-screen text-white'>
             {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 px-3 sm;p-0 sm:w-1/2 place-content-center'>
                 <div><h2 className='uppercase mt-3 text-4xl font-bold tracking-wider'>Sign In</h2></div>
                 <form className='flex-col gap-5' onSubmit={handleSubmit1} style={{ display: "flex", flexDirection: 'column' }}>

@@ -33,7 +33,6 @@ body{
     margin: 0;
     scroll-behavior: smooth;
     box-sizing: border-box;
-    color: white;
 }
 
 ::-webkit-scrollbar {
