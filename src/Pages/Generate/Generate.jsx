@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import URL from '../../Components/URL/URL';
 import { FaCopy } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa6";
+import { RiRefreshFill } from "react-icons/ri";
 
 const Generate = () => {
     const { user_data } = useGetUserData()
@@ -12,6 +13,7 @@ const Generate = () => {
     const [s_url, setS_url] = useState("SHORT URL")
     const [recentURL, setRecentURL] = useState([])
     const [loader, setLoader] = useState(false)
+    const [refresh, setRefresh] = useState(true)
 
     const copyLink = (url) => {
         navigator.clipboard.writeText(url)
@@ -19,7 +21,7 @@ const Generate = () => {
 
     useEffect(() => {
         getRecent()
-    }, [])
+    }, [refresh])
 
     const getRecent = async () => {
         if (user_data) {
@@ -104,11 +106,11 @@ const Generate = () => {
                     }}><FaCopy /></span>
                 </div>
                 <div className='w-full'>
-                    <div><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider mb-3'>Recent Short URL's [{recentURL.length}]</h2></div>
+                    <div className='flex justify-between items-center'><h2 className='mt-5 text-xl sm:text-2xl font-bold tracking-wider mb-3'>Recent Short URL's [{recentURL.length}]</h2><span className='self-end flex items-center gap-1 cursor-pointer border-2 rounded-lg p-1 px-2 text-sm border-green-400 hover:text-green-400 hover:border-white' onClick={() => { setRefresh((e) => !e) }}><RiRefreshFill />Refresh</span></div>
                     <div className='flex-col w-full'>
                         {recentURL.length != 0 ? <URL data={{ name: "Name", url: "URL", short_id: "Short URL" }} heading={true} /> : ""}
                         {recentURL.length != 0 ? recentURL.map(ele => {
-                            return <URL data={ele} />
+                            return <URL key={ele.name} data={ele} />
                         }) : <h4>No URL's to display</h4>}</div>
                     {recentURL.length != 0 ? <div className='pl-1'><h5 className='mt-2'>For More detalied view visit Analytics page</h5></div> : ""}
                 </div>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import useGetUserDetails from '../../hooks/useGetUserDetails';
+import { FaBars } from "react-icons/fa6";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
     const { user_data } = useGetUserDetails();
@@ -25,7 +27,7 @@ const Navbar = () => {
                         Shortify
                     </div>
                     <div>
-                        {toogle ? <i className="fa-solid fa-x text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(false) }}></i> : <i className="fa-solid fa-bars text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(true) }}></i>}
+                        {toogle ? <span className="fa-solid fa-x text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(false) }}><RxCross2 /></span> : <span className="fa-solid fa-bars text-2xl" style={{ color: "#ffffff" }} onClick={() => { setToggle(true) }}><FaBars /></span>}
                     </div>
                 </div>
                 <div className={`${toogle ? "flex-col mt-3" : "hidden"} sm:flex sm:flex-row w-full justify-evenly pt-2 sm:p-0 bg-black`} >

@@ -3,17 +3,20 @@ import useGetUserDetails from '../../hooks/useGetUserDetails'
 import AURL from '../../Components/AURL/AURL'
 import PieChart from '../../Components/PieChart/PieChart'
 import { toast } from 'react-hot-toast';
+import { RiRefreshFill } from "react-icons/ri";
 
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
     const [data, setData] = useState()
     const [loader, setLoader] = useState(true)
+    const [refresh, setRefresh] = useState(true)
     useEffect(() => {
         getAnalyticsData()
-    }, [])
+    }, [refresh])
     const getAnalyticsData = async (e) => {
         if (user_data) {
             try {
+                setLoader(true)
                 var res = -1;
                 setTimeout(() => {
                     res != -1 ? "" : toast.error("Server has started Now.\nPlease wait for few seconds", { autoClose: 4000 })
@@ -46,7 +49,7 @@ const Analytics = () => {
                     <div className='flex place-content-center'>
                         {data?.url_data ? <PieChart data={data?.url_data} /> : ""}
                     </div>
-
+                    <span className='justify-self-end w-fit flex items-center gap-1 cursor-pointer border-2 rounded-lg p-1 px-2 text-sm border-green-400 hover:text-green-400 hover:border-white' onClick={() => { setRefresh((e) => !e) }}><RiRefreshFill />Refresh</span>
                     <div>
                         <div>
                             {data ? <AURL data={{ name: "Name", url: "URL", short_id: "Short URL", clicks: "Clicks" }} heading={true} /> : ""}

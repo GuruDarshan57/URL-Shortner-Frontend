@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
 import { FaLink } from "react-icons/fa6";
@@ -19,9 +20,9 @@ const Home = () => {
                 <div className='py-16 sm:py-10 text-4xl font-bold text-orange-400' >Shorten, Share, and Track your URL's effortlessly.</div>
                 <div><button className='w-40 p-1 border-4 uppercase tracking-wider hover:bg-white font-bold hover:text-black' onClick={handleClick}>Get Started</button></div>
                 <div className='flex justify-center gap-8 p-4 pt-10 sm:mt-4'>
-                    <button className='border-2 p-4 rounded-full border-slate-400 cursor-default'><span className=''><FaLink /></span></button>
-                    <button className='border-2 p-4 rounded-full border-slate-400 cursor-default'><span className=''><FaShareNodes /></span></button>
-                    <button className='border-2 p-4 rounded-full border-slate-400 cursor-default'><span className=''><FaChartSimple /></span></button>
+                    <a href={"/analytics"} className='border-2 p-4 rounded-full border-slate-400 cursor-pointer hover:bg-white hover:text-black'><span className=''><FaLink /></span></a>
+                    <a href={"/analytics"} className='border-2 p-4 rounded-full border-slate-400 cursor-pointer hover:bg-white hover:text-black'><span className=''><FaShareNodes /></span></a>
+                    <a href={"/analytics"} className='border-2 p-4 rounded-full border-slate-400 cursor-pointer hover:bg-white hover:text-black'><span className=''><FaChartSimple /></span></a>
                 </div>
             </div>
         </div>
