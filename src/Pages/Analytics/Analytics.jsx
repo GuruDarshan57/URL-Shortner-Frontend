@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useGetUserDetails from '../../hooks/useGetUserDetails'
+import { useNavigate } from 'react-router-dom'
 import AURL from '../../Components/AURL/AURL'
 import PieChart from '../../Components/PieChart/PieChart'
 import { toast } from 'react-hot-toast';
@@ -7,11 +8,12 @@ import { RiRefreshFill } from "react-icons/ri";
 
 const Analytics = () => {
     const { user_data } = useGetUserDetails()
+    const navigate = useNavigate()
     const [data, setData] = useState()
     const [loader, setLoader] = useState(true)
     const [refresh, setRefresh] = useState(true)
     useEffect(() => {
-        getAnalyticsData()
+        user_data ? getAnalyticsData() : navigate("/signin")
     }, [refresh])
     const getAnalyticsData = async (e) => {
         if (user_data) {
@@ -40,7 +42,7 @@ const Analytics = () => {
     return (
         <div className='mt-20 sm:mt-28 pb-10 sm:pb-28 flex w-full place-content-center text-white'>
             {loader ? <div className="loader"></div> : <div className='flex-col w-11/12 sm:w-1/2'>
-                {data?.url_data?.length > 1 ? <>
+                {data?.url_data?.length > 0 ? <>
                     <div className='flex sm:border-2 sm:border-slate-400 text-center py-4'>
                         <div className='flex-1 sm:border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.urls}</div><div className='tracking-wider uppercase text-sm'>Total URL's</div></div>
                         <div className='flex-1 sm:border-r-2 flex-col'><div className='text-6xl sm:text-8xl'>{data?.clicks}</div><div className='tracking-wider uppercase text-sm'>Total Clicks</div></div>

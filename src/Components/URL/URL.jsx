@@ -15,7 +15,7 @@ const URL = (props) => {
                 {name}
             </div>
             <div className='flex-1 border-2 relative hidden xl:inline'>
-                <a className=' text-lime-300' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank" style={{ pointerEvents: `${props.heading ? "none" : ''}` }}>{props.heading ? "Short URL" : import.meta.env.VITE_Backend.slice(8,) + "/" + short_id}</a>
+                <a className=' text-lime-300 sm:text-sm' href={import.meta.env.VITE_Backend + "/" + short_id} target="_blank" style={{ pointerEvents: `${props.heading ? "none" : ''}` }}>{props.heading ? "Short URL" : import.meta.env.VITE_Backend + "/" + short_id}</a>
                 {props.heading ? "" : <span className='p-1 px-3 text-sm text-green-300 bottom-0 cursor-pointer absolute -right-1' onClick={() => {
                     const link = import.meta.env.VITE_Backend + "/" + short_id;
                     copyLink(link)
