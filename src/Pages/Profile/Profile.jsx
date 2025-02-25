@@ -15,7 +15,6 @@ const Profile = () => {
             const resp = await fetch(import.meta.env.VITE_Backend + "/user/signout", {
                 method: 'post',
                 headers: { "Content-Type": "Application/json" },
-                credentials: 'include'
             })
             const res = await resp.json()
             if (res.msg === "done") {

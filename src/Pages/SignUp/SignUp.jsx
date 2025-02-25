@@ -40,7 +40,6 @@ const SignUp = () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(user),
-                    credentials: 'include'
                 })
                 resp = await res.json()
                 if (res.status === 200) {

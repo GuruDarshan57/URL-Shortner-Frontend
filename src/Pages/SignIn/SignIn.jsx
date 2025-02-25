@@ -35,7 +35,6 @@ const SignIn = () => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(cred),
-                    credentials: 'include'
                 })
                 resp = await res.json()
                 if (res.status === 200) {

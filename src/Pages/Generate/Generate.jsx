@@ -34,7 +34,6 @@ const Generate = () => {
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/getRecent", {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
-                    credentials: 'include'
                 })
                 res = await resp.json()
                 if (resp.status === 200) {
@@ -68,8 +67,7 @@ const Generate = () => {
                 const res = await fetch(import.meta.env.VITE_Backend + "/s_url/generate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                    credentials: 'include'
+                    body: JSON.stringify(payload)
                 })
                 const resp = await res.json()
                 if (res.status === 200) {

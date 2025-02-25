@@ -18,7 +18,6 @@ const AURL = (props) => {
                 method: "delete",
                 headers: { 'content-type': "application/json" },
                 body: JSON.stringify(payload),
-                credentials: 'include'
             })
             const res = await resp.json()
             if (resp.status === 200) {

@@ -26,7 +26,6 @@ const Analytics = () => {
                 const resp = await fetch(import.meta.env.VITE_Backend + "/s_url/analytics", {
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
-                    credentials: 'include'
                 })
                 res = await resp.json()
                 if (resp.status === 200) {
